@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="channel-section">
+        <h2 class="section-title"><i class="fas fa-stream"></i> Gestion des Canaux</h2>
+
+        <!-- Afficher les messages -->
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p class="message">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Liste des canaux -->
+        <ul id="channel-list" class="channel-list">
+            {% for channel in channels %}
+                <li>
+                    <strong>{{ channel.name }}</strong>
+                    <form method="POST" action="{% url 'delete_channel' channel.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-btn">Supprimer</button>
+                    </form>
+                </li>
+            {% empty %}
+                <li>Aucun canal ajouté.</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Formulaire pour ajouter un canal -->
+        <br>
+        <h3>Ajouter un Nouveau Canal</h3>
+        <form method="POST" id="channel-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Ajouter</button>
+        </form>
+    </div>
+{% endblock %}

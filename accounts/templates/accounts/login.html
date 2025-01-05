@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style_login.css' %}">
+    <title>Login</title>
+</head>
+<body>
+    <div class="login-container">
+        
+        
+            
+            <form method="POST">
+                
+                <a href="{% url 'home' %}" class="close-btn" >x</a>
+
+                    
+                
+                
+                {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                            <p class="message">Error : {{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <h2 class="title">Connexion</h2>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Entrez votre email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="password" id="password" placeholder="Entrez votre mot de passe" required>
+                </div>
+                
+                <button type="submit" class="btn">Se connecter</button>
+                <p class="title">si vous n'a pas encore de compte <a href="{% url 'signup' %}">inscrivez ici</a>.</p>
+                
+            </form>
+            
+        
+    </div>
+
+    <style>
+        /* Style général */
+
+
+    </style>
+</body>
+</html>

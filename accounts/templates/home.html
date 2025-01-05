@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles_home.css' %}">
+    <title>{% block title %} Accueil - Surveillance solaire {% endblock %}</title>
+</head>
+<body>
+    <div class="home-container">
+        <h1>Bienvenue sur la plateforme de surveillance des installations solaire</h1>
+        <p>Accédez à une interface intuitive pour surveiller vos installations solaires en temps réel.</p>
+        <div class="home-buttons">
+            <a href="{% url 'login' %}" class="btn">Connexion</a>
+            <a href="{% url 'signup' %}" class="btn btn-secondary">Inscription</a>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="div1">
+        <h1>Pourquoi nous suivons les données des installations</h1>
+        <ol>
+            <li>Prendre décision en cas d'anomalie</li>
+            <li>Voir qlq</li>
+            <li>etc ...........</li>
+            <li>etc..........</li>
+        </ol>
+    </div>
+    
+</body>
+</html>

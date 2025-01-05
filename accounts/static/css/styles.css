@@ -1,0 +1,347 @@
+/* Style général */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f5f5f5;
+    overflow-x: hidden; /* Empêche le défilement horizontal */
+}
+
+header.header {
+    background-color: #8c939a;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Conteneur principal */
+.container {
+    display: flex;
+    min-height: 100vh; /* S'assure que le conteneur prend toute la hauteur de l'écran */
+}
+
+/* Barre latérale (sidebar) */
+.sidebar {
+    width: 300px;
+    background-color: #e2e3de;
+    color: rgb(97, 114, 242);
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul.menu li {
+    margin-bottom: 20px;
+}
+
+.sidebar ul.menu li a {
+    text-decoration: none;
+    color: rgb(25, 99, 227);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.sidebar ul.menu li a:hover,
+.sidebar ul.menu li.active a {
+    background-color: #8c939a;
+    color: #fff;
+}
+
+.sidebar ul.menu li a i {
+    margin-right: 10px; /* Espace entre l'icône et le texte */
+}
+
+.logout-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    color: white;
+    background-color: #ff4d4d;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #cc0000;
+}
+
+/* Contenu principal */
+main.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Permet de scroller le contenu si nécessaire */
+}
+
+/* Pied de page */
+footer.site-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer.site-footer .footer-content p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+footer.site-footer .footer-content p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+footer.site-footer .footer-content p a:hover {
+    text-decoration: underline;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .sidebar ul.menu li a {
+        font-size: 16px;
+    }
+}
+
+
+
+/* Style général pour la section Profil */
+.profile-details {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Titre de la section */
+.profile-details h2 {
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Informations du profil */
+.profile-details p {
+    font-size: 16px;
+    color: #333333;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.profile-details strong {
+    font-weight: bold;
+    color: #555555;
+    margin-right: 10px;
+}
+
+.profile-details .icon {
+    font-size: 20px;
+    color: #007bff;
+    margin-right: 15px;
+}
+
+/* Style de l'API Key */
+.profile-details code {
+    font-size: 14px;
+    color: #e53935;
+    background-color: #fce4ec;
+    padding: 5px 8px;
+    border-radius: 5px;
+    border: 1px solid #e57373;
+}
+
+.copy-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+.copy-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-details {
+        padding: 15px;
+    }
+
+    .profile-details p {
+        font-size: 14px;
+        flex-wrap: wrap;
+    }
+
+    .profile-details .icon {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+}
+
+
+/* channel   */
+
+/* Style général pour la section de gestion des canaux */
+#channel-section {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Titre de la section */
+.section-title {
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.section-title i {
+    margin-right: 10px;
+}
+
+/* Messages d'information */
+.messages {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #29c21b;
+    border-radius: 5px;
+    color: #35c01f;
+}
+
+.message {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Liste des canaux */
+.channel-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.channel-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.channel-list li strong {
+    font-size: 16px;
+    color: #333333;
+}
+
+.channel-list .delete-btn {
+    padding: 5px 10px;
+    background-color: #e53935;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.channel-list .delete-btn:hover {
+    background-color: #c62828;
+}
+
+/* Formulaire d'ajout de canal */
+#channel-form {
+    margin-top: 20px;
+
+}
+#channel-form input {
+    padding: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 50%;
+    
+}
+
+#channel-form h3 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #555555;
+}
+
+#channel-form .btn {
+    padding: 10px 20px;
+    background-color: #5e9bdc;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#channel-form .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #channel-section {
+        padding: 15px;
+    }
+
+    .channel-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .channel-list .delete-btn {
+        margin-top: 10px;
+    }
+}
+
+/* home   */
+
+/* Conteneur principal pour la page d'accueil */

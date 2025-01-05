@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <title>{% block title %}Acquisition de données{% endblock %}</title>
+</head>
+<body>
+    <header class="header">
+        <h1>Acquisition des données pour la surveillance des installations solaires</h1>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <ul class="menu">
+                <li class="{% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
+                    <a href="{% url 'profile' %}"><i class="fas fa-user"></i>&nbsp;&nbsp;&nbsp;Profil</a> 
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'channel' %}active{% endif %}">
+                    <a href="{% url 'channel' %}"><i class="fas fa-stream"></i>&nbsp;&nbsp;&nbsp;Gérer les canaux</a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+                    <a href="{% url 'dashboard' %}"><i class="fas fa-chart-line"></i>&nbsp;&nbsp;&nbsp;Dashboard</a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'historique' %}active{% endif %}">
+                    <a href="{% url 'historique' %}"><i class="fas fa-history"></i>&nbsp;&nbsp;&nbsp;Historique des données</a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'aide_support' %}active{% endif %}">
+                    <a href="{% url 'aide_support' %}"><i class="fas fa-life-ring"></i>&nbsp;&nbsp;&nbsp;Aide et support</a>
+                </li>
+                <p></p>
+                
+                <a href="{% url 'logout' %}" class="logout-btn">Se déconnecter</a>
+
+            </ul>
+        </aside>
+        <main class="content">
+            {% block content %}
+            
+            {% endblock %}
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p><i class="fas fa-envelope"></i> Email : support@solar-monitoring.com</p>
+            <p><i class="fas fa-phone-alt"></i> Téléphone : +33 1 23 45 67 89</p>
+            <p><a href="#"><i class="fas fa-file-contract"></i> Terms and Conditions</a></p>
+            <p>&copy; 2024 - Solar Monitoring. Tous droits réservés.</p>
+        </div>
+    </footer>
+    
+    {% block extra_scripts %}
+
+    {% endblock %}
+    
+    
+</body>
+</html>

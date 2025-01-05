@@ -1,0 +1,142 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("/static/images/solar_Monitoring.jpg");
+    background-size: cover; /* Assure que l'image couvre toute la page */
+    background-attachment: fixed; /* Fige l'image lors du défilement */
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Évite les répétitions */
+}
+
+.home-container {
+    text-align: center;
+    margin-left: 50px;
+    margin-top: 50px;
+    width: 20%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre principal */
+.home-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Texte descriptif */
+.home-container p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+/* Boutons de connexion et inscription */
+.home-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Styles pour les boutons */
+.btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Bouton secondaire (inscription) */
+.btn-secondary {
+    background-color: #28a745;
+}
+
+.btn-secondary:hover {
+    background-color: #218838;
+}
+
+
+.div1 {
+    background-color: white;
+    padding: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 50%;
+    margin: auto;
+    opacity: 0.8;
+    line-height: 200%;
+    
+}
+
+
+/* Smartphones en mode paysage */
+@media (min-width: 481px) and (max-width: 599px) {
+    .home-container {
+        width: 50%;
+    }
+    .home-container h1 {
+        font-size: 1rem;
+
+    }
+    .home-container p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Petites tablettes */
+@media (min-width: 600px) and (max-width: 767px) {
+    .home-container {
+        width: 40%;
+    }
+    .home-container h1 {
+        font-size: 1.2rem;
+
+    }
+    .home-container p {
+        font-size: 1rem;
+    }
+}
+
+/* Tablettes standard */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .home-container {
+        width: 30%;
+    }
+    .home-container h1 {
+        font-size: 1.5rem;
+
+    }
+
+}
+
+/* Ordinateurs portables */
+@media (min-width: 1024px) and (max-width: 1366px) {
+    .home-container {
+        width: 25%;
+    }
+    .home-container h1 {
+        font-size: 2rem;
+
+    }
+}
+
+/* Écrans de bureau */
+@media (min-width: 1367px) {
+    
+}
