@@ -22,6 +22,7 @@ body {
     opacity: 0.9;
     padding-right: 50px;
     margin: 100px auto;
+    position: relative;
 }
 
 .title {
@@ -83,3 +84,63 @@ body {
     color: #ff0000;
 }
 
+/* petit ecran */
+@media screen and (max-width: 480px) {
+    .login-container {
+        background-color: rgb(248, 248, 248);
+        width: 35%;
+        font-size: 0.5em;
+    }
+    .btn {
+        font-size: 0.7em;
+    }
+}
+
+/* Smartphones grands */
+@media screen and (min-width: 481px) and (max-width:768px){
+    .login-container {
+        background-color: rgb(248, 248, 248);
+        width: 35%;
+        font-size: 0.7em;
+    }
+    .btn {
+        font-size: 0.9em;
+    }
+}
+
+/* Tablettes */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    
+}
+
+/* Ordinateurs portables */
+@media screen and (min-width: 1025px) and (max-width: 1366px){
+    
+}
+
+.close-button {
+    position: absolute; /* Position absolue par rapport à .form-container */
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    padding: 7px;
+    transition: 1s;
+    border-radius: 7px;
+}
+.close-button:hover {
+    background-color: red;
+    transition: 1s;
+}
+
+.close-button a {
+    text-decoration: none;
+    color: #000;
+    font-size: 24px; /* Taille du "x" */
+    padding: 7px;
+    transition: 1s;
+}
+
+.close-button a:hover {
+    color: #ffffff; /* Change la couleur au survol */
+    transition: 1s;
+}

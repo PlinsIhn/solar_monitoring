@@ -1,0 +1,162 @@
+{% extends "admin/base_site.html" %}
+
+{% block extrastyle %}
+<style>
+    .grp-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    .grp-table th, .grp-table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+    .grp-table th {
+        background-color: #47220c;
+        color: white;
+    }
+    .grp-table tbody tr:hover {
+        background-color: #271d1d;
+    }
+    .button {
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: #79aec8;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+    .button:hover {
+        background-color: #609ab6;
+    }
+    .account-status {
+        font-weight: bold;
+    }
+    .account-status.active {
+        color: green;
+    }
+    .account-status.inactive {
+        color: red;
+    }
+    .pagination {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .pagination a {
+        margin: 0 5px;
+        padding: 5px 10px;
+        background-color: #79aec8;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+    .pagination a:hover {
+        background-color: #609ab6;
+    }
+    .pagination .current {
+        margin: 0 5px;
+        padding: 5px 10px;
+        background-color: #47220c;
+        color: white;
+        border-radius: 4px;
+    }
+    .search-form {
+        margin-bottom: 20px;
+    }
+    .search-form input[type="text"] {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        width: 300px;
+    }
+    .search-form button {
+        padding: 8px 15px;
+        background-color: #79aec8;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .search-form button:hover {
+        background-color: #609ab6;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>Liste des Utilisateurs et leurs Canaux</h1>
+
+<!-- Total d'utilisateurs -->
+<p>Total d'utilisateurs : <strong>{{ total_users }}</strong></p>
+
+<!-- Formulaire de recherche par email -->
+<form method="get" action="." class="search-form">
+    <input type="text" name="email" placeholder="Rechercher par email" value="{{ request.GET.email }}">
+    <button type="submit">Rechercher</button>
+</form>
+
+<!-- Filtres pour les comptes actifs/inactifs -->
+<p>
+    <a href="?is_active=true" class="button">Voir les comptes actifs</a>
+    <a href="?is_active=false" class="button">Voir les comptes non actifs</a>
+    <a href="?" class="button">Voir tous les comptes</a>
+</p>
+
+<!-- Tableau des utilisateurs -->
+<table border="1" class="grp-table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>API Key</th>
+            <th>Statut Compte</th>
+            <th>Canaux Créés</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in user_data %}
+        <tr>
+            <td>
+                <a href="{% url 'admin:accounts_customuser_change' user.id %}">{{ user.username }}</a>
+            </td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.api_key }}</td>
+            <td>
+                <span class="account-status {% if user.is_active %}active{% else %}inactive{% endif %}">
+                    {% if user.is_active %}Actif{% else %}Non actif{% endif %}
+                </span>
+            </td>
+            <td>
+                {% for channel in user.channels %}
+                    <a href="{% url 'admin:accounts_channel_change' channel.id %}">{{ channel.name }}</a> (Créé le {{ channel.created_at|date:"d/m/Y H:i" }})<br>
+                {% empty %}
+                    Aucun canal
+                {% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Pagination -->
+<div class="pagination">
+    <span class="step-links">
+        {% if user_data.has_previous %}
+            <a href="?page=1">&laquo; première</a>
+            <a href="?page={{ user_data.previous_page_number }}">précédente</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ user_data.number }} sur {{ user_data.paginator.num_pages }}.
+        </span>
+
+        {% if user_data.has_next %}
+            <a href="?page={{ user_data.next_page_number }}">suivante</a>
+            <a href="?page={{ user_data.paginator.num_pages }}">dernière &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+<a href="{% url 'admin:index' %}" class="button">Retour au tableau de bord</a>
+{% endblock %}

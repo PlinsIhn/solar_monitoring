@@ -23,7 +23,10 @@
             </div>
         {% endif %}
 
-        
+        <div class="close-button">
+            <a href="{% url 'home' %}">×</a> 
+        </div>
+
         <h2 class="title">Inscription</h2>
         <form method="POST">
             {% csrf_token %}
@@ -67,7 +70,7 @@
         </form>
 
         <p class="title">Si vous avez déjà un compte <a href="{% url 'login' %}">connectez-vous ici</a>.</p>
-        <a href="{% url 'home' %}">fermer</a>
+        
         
     </div>
 </body>

@@ -28,6 +28,9 @@ class Channel(models.Model):
     name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        unique_together = ('name', 'user')
+        
     def __str__(self):
         return self.name
 
@@ -38,14 +41,4 @@ class ChannelData(models.Model):
 
     def __str__(self):
         return f"{self.channel.name} - {self.timestamp}"
-    
-from django.db import models
-from django.contrib.auth.models import User
-
-class APIKey(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    key = models.CharField(max_length=128)
-
-    def __str__(self):
-        return f"API Key for {self.user.username}"
     

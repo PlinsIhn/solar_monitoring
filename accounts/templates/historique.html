@@ -1,6 +1,70 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Historique des Données{% endblock %}
+
 {% block content %}
-<h2>Historique des Données</h2>
-<p>Liste des données reçues...</p>
+<div id="channel-section-historique">
+    <h2 class="section-title"><i class="fas fa-history"></i> Historique des données</h2>
+
+    <!-- Formulaire de filtrage -->
+    <form method="GET" action="{% url 'historique' %}" class="filter-form">
+        <label for="channel">Canal :</label>
+        <select name="channel" id="channel">
+            <option value="">-- Tous --</option>
+            {% for channel in channels %}
+            <option value="{{ channel.id }}" {% if request.GET.channel == channel.id|stringformat:"s" %}selected{% endif %}>
+                {{ channel.name }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <label for="start_date">De :</label>
+        <input type="date" name="start_date" id="start_date" value="{{ request.GET.start_date }}">
+
+        <label for="end_date">À :</label>
+        <input type="date" name="end_date" id="end_date" value="{{ request.GET.end_date }}">
+
+        <button type="submit">Filtrer</button>
+    </form>
+</div>
+<table id="historique-table" class="historique-table">
+    <thead>
+        <tr>
+            <th>Canal</th>
+            <th>Valeur</th>
+            <th>Reçus le</th>
+        </tr>
+    </thead>
+    <tbody id="table-body">
+        {% for data in historique_data %}
+        <tr>
+            <td>{{ data.channel.name }}</td>
+            <td>
+                {{ data.value }}
+                {% if "tension" in data.channel.name|lower %}V{% endif %}
+                {% if "courant" in data.channel.name|lower %}A{% endif %}
+                {% if "puissance" in data.channel.name|lower %}W{% endif %}
+                {% if "temperature" in data.channel.name|lower %}°C{% endif %}
+                {% if "rayon" in data.channel.name|lower %}W/m²{% endif %}
+                {% if "humidite" in data.channel.name|lower %}%{% endif %}
+            </td>
+            <td>{{ data.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Pagination -->
+<div id="pagination">
+    <button id="prev-btn" onclick="prevPage()">Précédent</button>
+    <span id="page-info"></span>
+    <button id="next-btn" onclick="nextPage()">Suivant</button>
+</div>
+
+
+<script src="{% static 'js/pagination.js' %}"></script>
+
+
 {% endblock %}
+
+

@@ -8,7 +8,7 @@
         {% if messages %}
             <div class="messages">
                 {% for message in messages %}
-                    <p class="message">{{ message }}</p>
+                    <p class="message {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
                 {% endfor %}
             </div>
         {% endif %}
@@ -30,11 +30,21 @@
 
         <!-- Formulaire pour ajouter un canal -->
         <br>
-        <h3>Ajouter un Nouveau Canal</h3>
+        <h2 class="nouveau">Ajouter un Nouveau Canal</h2>
         <form method="POST" id="channel-form">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn">Ajouter</button>
+            <label for="id_name">Type de Canal : </label>
+            <select name="name" id="id_name" class="form-control">
+                <option value="" disabled selected>Choisissez un canal</option>
+                <option value="temperature_ps">temperature_ps</option>
+                <option value="tension_ps">tension_ps</option>
+                <option value="courant_ps">courant_ps</option>
+                <option value="puissance_ps">puissance_ps</option>
+                <option value="rayon solaire">rayon solaire</option>
+                <option value="tension_batt">tension_batt</option>
+                <option value="humidite_ps">humidite_ps</option>
+            </select>
+            &nbsp;<button type="submit" class="btn">Ajouter</button>
         </form>
     </div>
 {% endblock %}

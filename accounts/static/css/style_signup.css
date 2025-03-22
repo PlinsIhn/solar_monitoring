@@ -23,6 +23,7 @@ body {
     padding-right: 50px;
     opacity: 0.9;
     margin: 100px auto;
+    position: relative;
 }
 
 .form-container h2 {
@@ -83,4 +84,57 @@ body {
 }
 .messages p {
     margin: 0;
+}
+
+
+/* petit ecran */
+@media screen and (max-width: 480px) {
+    .form-container {
+        width: 35%;
+        font-size: 0.5em;
+    }
+    .btn {
+        font-size: 0.7em;
+    }
+}
+
+/* Smartphones grands */
+@media screen and (min-width: 481px) and (max-width:768px){
+    .form-container {
+        width: 35%;
+        font-size: 0.7em;
+    }
+    .btn {
+        font-size: 0.9em;
+    }
+}
+
+
+
+
+.close-button {
+    position: absolute; /* Position absolue par rapport à .form-container */
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    padding: 7px;
+    transition: 1s;
+    border-radius: 7px;
+}
+.close-button:hover {
+    background-color: red;
+    transition: 1s;
+}
+
+.close-button a {
+    text-decoration: none;
+    color: #000;
+    font-size: 24px; /* Taille du "x" */
+    padding: 7px;
+    transition: 1s;
+}
+
+.close-button a:hover {
+    color: #ffffff; /* Change la couleur au survol */
+    transition: 1s;
 }

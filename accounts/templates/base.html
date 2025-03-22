@@ -7,37 +7,75 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <title>{% block title %}Acquisition de données{% endblock %}</title>
+    
 </head>
 <body>
     <header class="header">
-        <h1>Acquisition des données pour la surveillance des installations solaires</h1>
-    </header>
+        <h1 id="typing-text"></h1>
+    </header>    
 
     <div class="container">
         <aside class="sidebar">
+            
             <ul class="menu">
                 <li class="{% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
-                    <a href="{% url 'profile' %}"><i class="fas fa-user"></i>&nbsp;&nbsp;&nbsp;Profil</a> 
+                    <a href="{% url 'profile' %}"><i class="fas fa-user"></i><span>&nbsp;&nbsp;&nbsp;Profil</span></a> 
                 </li>
                 <li class="{% if request.resolver_match.url_name == 'channel' %}active{% endif %}">
-                    <a href="{% url 'channel' %}"><i class="fas fa-stream"></i>&nbsp;&nbsp;&nbsp;Gérer les canaux</a>
+                    <a href="{% url 'channel' %}"><i class="fas fa-stream"></i><span>&nbsp;&nbsp;&nbsp;Gérer les canaux</span></a>
                 </li>
                 <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
-                    <a href="{% url 'dashboard' %}"><i class="fas fa-chart-line"></i>&nbsp;&nbsp;&nbsp;Dashboard</a>
+                    <a href="{% url 'dashboard' %}"><i class="fas fa-chart-line"></i><span>&nbsp;&nbsp;&nbsp;Dashboard</span></a>
                 </li>
                 <li class="{% if request.resolver_match.url_name == 'historique' %}active{% endif %}">
-                    <a href="{% url 'historique' %}"><i class="fas fa-history"></i>&nbsp;&nbsp;&nbsp;Historique des données</a>
+                    <a href="{% url 'historique' %}"><i class="fas fa-history"></i><span>&nbsp;&nbsp;&nbsp;Historique des données</span></a>
                 </li>
                 <li class="{% if request.resolver_match.url_name == 'aide_support' %}active{% endif %}">
-                    <a href="{% url 'aide_support' %}"><i class="fas fa-life-ring"></i>&nbsp;&nbsp;&nbsp;Aide et support</a>
+                    <a href="{% url 'aide_support' %}"><i class="fas fa-life-ring"></i><span>&nbsp;&nbsp;&nbsp;Aide et support</span></a>
                 </li>
-                <p></p>
+                <button id="test-graph-btn" class="btn_teste">Teste</button>
                 
-                <a href="{% url 'logout' %}" class="logout-btn">Se déconnecter</a>
-
+                <div id="test-graph-form-container" class="forme_teste" >
+                    <p class="description">Entrer des valeurs pour chaque canal</p>
+                    {% for channel in channels %}
+                        <div style=" align-items: center; margin-bottom: 10px;">
+                            <label for="channel-{{ channel.id }}" style="flex: 1;" class="name">{{ channel.name }}</label>
+                            <input class="inpute" type="number" id="channel-{{ channel.id }}" name="channel-{{ channel.id }}" step="any" style="flex: 2; margin-right: 10px;">
+                            <button type="button" class="btn send-btn" data-channel-id="{{ channel.id }}"><i id="send-btn" class="fa fa-paper-plane"></i></button>
+                        </div>
+                    {% endfor %}
+                </div>  
+                <br>
+                <a href="{% url 'logout' %}" class="logout-btn"><i class="fas fa-sign-out-alt"></i><span>&nbsp;&nbsp;&nbsp;Se déconnecter</span></a>
             </ul>
         </aside>
         <main class="content">
+            <header>
+                <div class="datetime">
+                    <p id="current-datetime">{{ current_datetime|date:"d F Y H:i" }}</p> <!-- Place pour afficher l'heure -->
+                </div>
+            </header>
+            <!-- Icône de notification -->
+            <div id="notification-container">
+                <button id="notification-btn">
+                    <i class="fas fa-bell"></i> <span id="notification-count" class="badge">0</span>
+                </button>
+                
+                <!-- Contenu des notifications (caché par défaut) -->
+                <div id="notification-dropdown" class="hidden">
+                    <h4>Notifications</h4>
+                    <ul id="notification-list">
+                        <li>Aucune notification</li>
+                    </ul>
+                </div>
+            </div>
+
+           
+            <label class="notif" >
+                <input type="checkbox" id="enable-alert-time" checked> Activer la notification entre (07h00 - 16h30)
+            </label>
+
+
             {% block content %}
             
             {% endblock %}
@@ -46,10 +84,10 @@
 
     <footer class="site-footer">
         <div class="footer-content">
-            <p><i class="fas fa-envelope"></i> Email : support@solar-monitoring.com</p>
-            <p><i class="fas fa-phone-alt"></i> Téléphone : +33 1 23 45 67 89</p>
-            <p><a href="#"><i class="fas fa-file-contract"></i> Terms and Conditions</a></p>
-            <p>&copy; 2024 - Solar Monitoring. Tous droits réservés.</p>
+            <p><i class="fas fa-envelope"></i> : hrpirkt@gmail.com</p>
+            <p><i class="fas fa-phone-alt"></i> : +261 34 65 070 44 / +261 34 95 059 94</p>
+            <p>&copy; 2025 - Solar Monitoring. <a href="#"><i class="fas fa-file-contract"></i> Terms and Conditions</a> </p>
+            <p>Tous droits réservés</p>
         </div>
     </footer>
     
@@ -57,6 +95,97 @@
 
     {% endblock %}
     
+    <script>
+        document.getElementById("test-graph-btn").addEventListener("click", function () {
+            let formContainer = document.getElementById("test-graph-form-container");
+            formContainer.style.display = (formContainer.style.display === "none") ? "block" : "none";
+        });
+
+        document.querySelectorAll(".send-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                let channelId = this.getAttribute("data-channel-id");
+                let inputField = document.getElementById(`channel-${channelId}`);
+                let value = parseFloat(inputField.value);
+
+                if (isNaN(value)) {
+                    alert("Veuillez entrer une valeur valide.");
+                    return;
+                }
+
+                let formData = {};
+                formData[`channel-${channelId}`] = value;
+
+                fetch("{% url 'test_graph' %}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": "{{ csrf_token }}"
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Donnée enregistrée !");
+                        updateGraphWithTestData(channelId, value);
+                    } else {
+                        alert("Erreur : " + data.error);
+                    }
+                })
+                .catch(error => console.error("Erreur d'envoi :", error));
+            });
+        });
+
+        function updateGraphWithTestData(channelId, value) {
+            let canvas = document.querySelector(`canvas#chart-${channelId}`);
+            let chartInstance = Chart.getChart(canvas);
+
+            if (chartInstance) {
+                chartInstance.data.labels.push(new Date().toLocaleTimeString());
+                chartInstance.data.datasets[0].data.push(value);
+                chartInstance.update();
+            }
+        }
+    </script>
+
+    <script src="{% static 'js/notification.js' %}"></script>
+    <script src="{% static 'js/datetime.js' %}"></script>
     
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const text = "Acquisition des données pour la surveillance des installations solaires";
+    const typingElement = document.getElementById("typing-text");
+    let index = 0;
+    let isDeleting = false; // Gérer l'effacement
+    let speed = 50; // Vitesse de frappe
+
+    function typeWriter() {
+        if (!isDeleting) {
+            typingElement.innerHTML = text.substring(0, index);
+            index++;
+            if (index > text.length) {
+                isDeleting = true;
+                speed = 50; // Pause avant suppression
+            }
+        } else {
+            typingElement.innerHTML = text.substring(0, index);
+            index--;
+            speed = 50; // Vitesse de suppression
+            if (index === 0) {
+                isDeleting = false;
+                speed = 50; // Pause avant recommencer
+            }
+        }
+        setTimeout(typeWriter, speed);
+    }
+
+    typeWriter();
+});
+
+
+    </script>
 </body>
 </html>

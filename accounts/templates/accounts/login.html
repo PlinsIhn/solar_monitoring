@@ -10,14 +10,11 @@
 <body>
     <div class="login-container">
         
-        
-            
             <form method="POST">
                 
-                <a href="{% url 'home' %}" class="close-btn" >x</a>
-
-                    
-                
+                <div class="close-button">
+                    <a href="{% url 'home' %}">×</a> 
+                </div>
                 
                 {% if messages %}
                     <div class="messages">

@@ -1,6 +1,257 @@
 {% extends 'base.html' %}
-{% block title %}Aide et Support{% endblock %}
+
+{% block title %}Aide & Support{% endblock %}
+
 {% block content %}
-<h2>Aide et Support</h2>
-<p>Comment pouvons-nous vous aider ?</p>
+<div id="channel-section">
+<h2 class="section-title">&emsp;&emsp;<i class="fas fa-life-ring"></i>Aide & Support</h2>
+
+<!-- FAQ -->
+<section class="faq">
+    <h3>📌 Questions Fréquentes</h3>
+
+    <div class="faq-item">
+        <h4 class="faq-question">Q1 : Comment créer un compte ?</h4>
+        <p class="faq-answer">👉 Allez sur la page d’inscription, remplissez le formulaire et validez. Vous recevrez un email de confirmation.</p>
+    </div>
+
+    <div class="faq-item">
+        <h4 class="faq-question">Q2 : Comment ajouter un canal ?</h4>
+        <p class="faq-answer">👉 Dans l’onglet Channel, cliquez sur "Ajouter un canal", donnez-lui un nom et validez.</p>
+    </div>
+
+    <div class="faq-item">
+        <h4 class="faq-question">Q3 : Comment interpréter les graphiques ?</h4>
+        <p class="faq-answer">👉 Les graphiques affichent les valeurs en fonction du temps. Vous pouvez voir l’évolution des mesures captées par vos capteurs.</p>
+    </div>
+
+    <div class="faq-item">
+        <h4 class="faq-question">Q4 : Comment chercher les données </h4>
+        <p class="faq-answer">👉 Allez dans l’onglet Historique, utilisez les filtres, puis entrer</p>
+    </div>
+
+    <div class="faq-item">
+        <h4 class="faq-question">Q5 : Que faire si je ne reçois pas de données ?</h4>
+        <p class="faq-answer">👉 Vérifiez que vos capteurs sont bien connectés </p>
+    </div>
+</section>
+
+<!-- Guides d’utilisation -->
+<section class="guides">
+    <h3>📖 Guides d’utilisation</h3>
+    <ul>
+        <li>🛠 <strong>Guide d’installation et de configuration :</strong>quand votre compte est activé, envoyer à l'adresse email ci-dessous votre api_key dans profil</li>
+        <br>
+        <li>📊 <strong>Comprendre les unités de mesure :</strong></li>
+        <ul>
+            <li> Tension (V)</li>
+            <li> Courant (A)</li>
+            <li> Puissance (W)</li>
+            <li> Irradiation solaire (lux)</li>
+            <li> Température (°C)</li>
+            <li> Humidité (%)</li>
+        </ul>
+    </ul>
+</section>
+<section class="troubleshooting">
+    <h3>🛠 Dépannage et résolution de problèmes</h3>
+    <div class="faq-item">
+        <h4 class="faq-question">🔹 Problèmes de connexion</h4>
+        <p class="faq-answer">✅ Vérifiez que votre mot de passe est correct et que votre compte est activé.</p>
+    </div>
+    <div class="faq-item">
+        <h4 class="faq-question">🔹 Les graphiques ne s’affichent pas</h4>
+        <p class="faq-answer">✅ Vérifiez votre connexion Internet et rechargez la page.</p>
+    </div>
+    <div class="faq-item">
+        <h4 class="faq-question">🔹 Les alertes ne fonctionnent pas correctement</h4>
+        <p class="faq-answer">✅ Assurez-vous que la notification d'alerte est activée</p>
+    </div>
+</section>
+<!-- Assistance technique -->
+<section class="assistance">
+    <h3>🚀 Assistance technique</h3>
+
+    <p>📩 Email de support : <a href="mailto:hrpirkt@gmail.com">hrpirkt@gmail.com</a></p>
+    <p>📞 Téléphone : 034 65 070 44 / 034 95 059 94</p>
+    
+
+    <h4>📧 Envoyer un message au support</h4>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="message {% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                {{ message }}
+            </p>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        <label for="email">Votre Email :</label>
+        <input type="email" id="email" name="email" value="{{ request.user.email }}" readonly>
+
+        <label for="subject">Objet :</label>
+        <input type="text" id="subject" name="subject" placeholder="Objet du message">
+
+        <label for="message">Votre message :</label>
+        <textarea id="message" name="message" placeholder="Décrivez votre problème ici..."></textarea>
+
+        <button type="submit">Envoyer</button>
+    </form>
+    
+
+    <p id="response-message" style="display: none; color: green;">Votre message a bien été envoyé !</p>
+</section>
+
+
+<!-- Dépannage -->
+
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Ajouter un effet "toggle" aux questions de la FAQ
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+        });
+    });
+</script>
+
+<style>
+    .faq-item {
+    background-color: #f9f9f9;
+    padding: 0px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.faq-question {
+    font-weight: bold;
+    color: #007BFF;
+    cursor: pointer;
+}
+
+.faq-answer {
+    display: none; /* Masquer par défaut */
+    padding: 5px;
+    border-left: 3px solid #007BFF;
+    margin-top: 5px;
+}
+
+/* Style du formulaire */
+form {
+    max-width: 100%;
+    margin: 10px auto;
+    padding: 20px;
+    background: #f3ecec;
+    border-radius: 8px;
+}
+
+/* Style des labels */
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Style des champs de saisie */
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Champ de texte (textarea) */
+form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Style du bouton d'envoi */
+form button {
+    width: 50%;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.5s ease-in-out;
+}
+
+form button:hover {
+    background: #fafafa;
+    color: #0153ac;
+    transition: background 0.5s ease-in-out;
+}
+
+/* Style des messages de confirmation / erreur */
+.message {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+@media screen and (max-width: 480px) {
+    form input[type="text"],
+    form input[type="email"],
+    form textarea {
+        font-size: 1em;
+    }
+    form button {
+        font-size: 1em;
+    }
+}
+
+/* Smartphones grands */
+@media screen and (min-width: 481px) and (max-width:768px){
+    form input[type="text"],
+    form input[type="email"],
+    form textarea {
+        font-size: 1.2em;
+    }
+    form button {
+        font-size: 1.2em;
+    }
+}
+
+</style>
+
+<script>
+    setTimeout(() => {
+        const messageBox = document.getElementById('response-message');
+        if (messageBox) {
+            messageBox.style.display = 'none';
+        }
+    }, 5000); // Cache le message après 5 secondes
+</script>
+
 {% endblock %}

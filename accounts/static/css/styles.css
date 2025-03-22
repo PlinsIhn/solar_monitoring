@@ -8,15 +8,65 @@ body {
     overflow-x: hidden; /* Empêche le défilement horizontal */
 }
 
-header.header {
-    background-color: #8c939a;
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px; /* Ajuste selon le besoin */
+    background-color: rgb(77, 69, 26);
     color: white;
     text-align: center;
-    padding: 5px;
-    font-size: 18px;
-    font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+#typing-text {
+    font-size: 1.8rem; /* Ajuste la taille du texte */
+    font-weight: bold;
+    white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+#typing-text::after {
+    content: "|";
+    font-weight: normal;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+
+@media screen and (max-width: 480px) {
+    #typing-text {
+        font-size: 0.8em; /* Ajuste la taille du texte */
+
+    }
+
+}
+
+/* Smartphones grands */
+@media screen and (min-width: 481px) and (max-width:768px){
+    #typing-text {
+        font-size: 0.9em; /* Ajuste la taille du texte */
+
+    }
+}
+
+/* Tablettes */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    #typing-text {
+        font-size: 1.1em; /* Ajuste la taille du texte */
+
+    }
+}
+
+/* Ordinateurs portables */
+@media screen and (min-width: 1025px) and (max-width: 1366px){
+    #typing-text {
+        font-size: 1.3em; /* Ajuste la taille du texte */
+
+    }
+}
+
 
 /* Conteneur principal */
 .container {
@@ -26,8 +76,8 @@ header.header {
 
 /* Barre latérale (sidebar) */
 .sidebar {
-    width: 300px;
-    background-color: #e2e3de;
+    width: 230px;
+    background-color: #ccccca;
     color: rgb(97, 114, 242);
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -89,6 +139,48 @@ main.content {
     overflow-y: auto; /* Permet de scroller le contenu si nécessaire */
 }
 
+/* Smartphones petits et moyens */
+@media screen and (max-width: 480px) {
+    .sidebar {
+        background-color: #e2e3de;
+        width: 45px;
+    }
+    span {
+        display : none;
+    }
+    main.content {
+        font-size: 0.5em; /* Permet de scroller le contenu si nécessaire */
+    }
+    
+}
+
+/* Smartphones grands */
+@media screen and (min-width: 481px) and (max-width:768px){
+    .sidebar {
+        background-color: #e2e3de;
+        width: 50px;
+    }
+    span {
+        display : none;
+    }
+    main.content {
+        font-size: 0.7em; /* Permet de scroller le contenu si nécessaire */
+    }
+}
+
+/* Tablettes */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .sidebar {
+        background-color: #e2e3de;
+        width: 50px;
+    }
+    span {
+        display : none;
+    }
+}
+
+
+
 /* Pied de page */
 footer.site-footer {
     background-color: #333;
@@ -102,7 +194,7 @@ footer.site-footer {
 
 footer.site-footer .footer-content p {
     margin: 5px 0;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 footer.site-footer .footer-content p a {
@@ -112,26 +204,16 @@ footer.site-footer .footer-content p a {
 
 footer.site-footer .footer-content p a:hover {
     text-decoration: underline;
+    color : rgb(8, 185, 52);
 }
 
-/* Responsiveness */
-@media screen and (max-width: 768px) {
-    .sidebar {
-        width: 200px;
-    }
-
-    .sidebar ul.menu li a {
-        font-size: 16px;
-    }
-}
-
-
+           /* PROFIL */
 
 /* Style général pour la section Profil */
 .profile-details {
     max-width: 800px;
     margin: 20px auto;
-    background-color: #f9f9f9;
+    background-color: #f3ecec;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -140,7 +222,7 @@ footer.site-footer .footer-content p a:hover {
 
 /* Titre de la section */
 .profile-details h2 {
-    font-size: 24px;
+    font-size: 20px;
     color: #007bff;
     margin-bottom: 20px;
     text-align: center;
@@ -190,34 +272,56 @@ footer.site-footer .footer-content p a:hover {
 }
 
 .copy-btn:hover {
-    background-color: #0056b3;
+    background-color: #ffffff;
+    color:#007bff;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .profile-details {
-        padding: 15px;
-    }
-
+/* Smartphones petits et moyens */
+@media screen and (max-width: 480px) {
     .profile-details p {
-        font-size: 14px;
-        flex-wrap: wrap;
+        font-size: 0.8em;
     }
+    .profile-details code {
+        font-size: 0.6em;
+    }
+    .copy-btn {
+        font-size: 1em;
+    }
+    .profile-details h2 {
+        font-size: 14px;
+    }
+    footer.site-footer .footer-content p {
+        font-size: 9px;
+    }
+}
 
-    .profile-details .icon {
-        font-size: 18px;
-        margin-right: 10px;
+/* Smartphones grands */
+@media screen and (min-width: 481px) and (max-width:768px){
+    .profile-details p {
+        font-size: 1em;
+    }
+    .profile-details code {
+        font-size: 0.8em;
+    }
+    .copy-btn {
+        font-size: 1em;
+    }
+    .profile-details h2 {
+        font-size: 14px;
+    }
+    footer.site-footer .footer-content p {
+        font-size: 10px;
     }
 }
 
 
-/* channel   */
+/* CHANNEL   */
 
 /* Style général pour la section de gestion des canaux */
 #channel-section {
     max-width: 800px;
     margin: 20px auto;
-    background-color: #f9f9f9;
+    background-color: #f3ecec;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -226,15 +330,27 @@ footer.site-footer .footer-content p a:hover {
 
 /* Titre de la section */
 .section-title {
-    font-size: 24px;
+    font-size: 20px;
     color: #007bff;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
+    text-align: center;
 }
 
 .section-title i {
     margin-right: 10px;
+}
+@media screen and (max-width: 480px) {
+    .section-title {
+        font-size: 14px;
+    }
+    
+}
+@media screen and (min-width: 481px) and (max-width:768px){
+    .section-title {
+        font-size: 14px;
+    }
 }
 
 /* Messages d'information */
@@ -281,20 +397,28 @@ footer.site-footer .footer-content p a:hover {
     background-color: #e53935;
     color: #ffffff;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.5s ease;
 }
 
 .channel-list .delete-btn:hover {
-    background-color: #c62828;
+    background-color: #ffffff;
+    color: #e53935;
+    transition: background-color 0.5s ease;
 }
 
 /* Formulaire d'ajout de canal */
+.nouveau {
+    color: rgb(7, 7, 80);
+}
 #channel-form {
     margin-top: 20px;
 
+}
+form label {
+    font-size: 16px;
 }
 #channel-form input {
     padding: 10px;
@@ -312,36 +436,299 @@ footer.site-footer .footer-content p a:hover {
 }
 
 #channel-form .btn {
-    padding: 10px 20px;
+    padding: 5px 10px;
     background-color: #5e9bdc;
     color: #ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    font-size: 14px;
+    transition: background-color 0.5s ease;
 }
 
 #channel-form .btn:hover {
-    background-color: #0056b3;
+    background-color: #ffffff;
+    color: #5e9bdc;
+    transition: background-color 0.5s ease;
+
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    #channel-section {
-        padding: 15px;
+.forme_teste {
+    display: none; 
+    margin-top: 10px;
+    padding-top: 1px;
+    padding: 3px; 
+    
+}
+
+.btn_teste {
+    padding: 10px;
+    background-color: #49db3b;
+    border: none;
+    color : white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.inpute {
+    width: 40px;
+    font-size: 12px;
+    height: 18px;
+}
+.send-btn {
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: rgb(81, 106, 245);
+    transition: background 0.3s ease;
+  }
+  
+  .send-btn:hover {
+    background: #005bb5;
+    color: white;
+  }
+  .name {
+    font-size: 15px;
+  }
+
+@media screen and (max-width: 480px) {
+    .description {
+        display: none;
+    }
+    .inpute {
+        width: 30px;
+        font-size: 9px;
+        height: 18px;
+    }
+    .name {
+        font-size: 8px;
     }
 
-    .channel-list li {
-        flex-direction: column;
-        align-items: flex-start;
+    .channel-list li strong {
+        font-size: 1em;
     }
-
     .channel-list .delete-btn {
-        margin-top: 10px;
+        font-size: 1em;
+    }
+    form label {
+        font-size : 1em;
+    }
+    #channel-form .btn {
+        font-size: 1em;
     }
 }
 
-/* home   */
+/* Smartphones grands */
+@media screen and (min-width: 481px) and (max-width:768px){
+    .description {
+        display: none;
+    }
+    .name {
+        font-size: 10px;
+     }
 
-/* Conteneur principal pour la page d'accueil */
+     .channel-list li strong {
+        font-size: 1.2em;
+    }
+    .channel-list .delete-btn {
+        font-size: 1.1em;
+    }
+    form label {
+        font-size : 1.2em;
+    }
+    
+}
+
+/* Tablettes */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .name {
+        font-size: 10px;
+    }
+    .description {
+        font-size: 10px;
+    }
+    
+}
+
+/* Ordinateurs portables */
+@media screen and (min-width: 1025px) and (max-width: 1366px){
+    
+}
+
+
+#notification-container {
+    top: 20px;
+    right: 50px;
+}
+
+#notification-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+.badge {
+    background-color: red;
+    color: white;
+    font-size: 0.4em;
+    border-radius: 50%;
+    padding: 3px 6px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#notification-dropdown {
+    display: none;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    width: 250px;
+    padding: 10px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+
+#notification-dropdown ul {
+    list-style: none;
+    padding: 0;
+}
+
+#notification-dropdown ul li {
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+.notif {
+    font-size: 16px;
+}
+
+/* HISTORIQUE */
+
+.page-title {
+    font-size: 2rem;
+    color: #333;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.historique-table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.historique-table th, .historique-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.historique-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+.historique-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.historique-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.historique-table td {
+    font-size: 0.8rem;
+    color: #333;
+}
+
+
+
+header {
+    display: flex;           /* Utilise Flexbox pour aligner les éléments */
+    justify-content: flex-end; /* Aligne les éléments enfants à droite */
+    padding: 10px 20px;        /* Espacement autour de l'en-tête */
+}
+
+.datetime {
+    margin-left: auto; /* Pousse la date à droite */
+}
+
+.datetime p {
+    margin: 0;
+    font-weight: bold;
+    color: #484be9;
+    text-transform: capitalize; /* Met la première lettre en majuscule */
+}
+
+
+#channel-section-historique {
+    max-width: 800px;
+    margin: 5px auto;
+    padding: 1px;
+    padding-top: 0px;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+
+.graphefiltretitre {
+    color: red;
+    text-align: center; 
+    margin: 0 0 5px 0;
+}
+.graphefiltredate  {
+    text-align: center; 
+    margin: 0 0 10px 0; 
+    color: #666;
+}
+.izy {
+    color:rgb(0, 255, 42);
+}
+@media screen and (max-width: 480px) {
+    .graphefiltretitre {
+        font-size: 0.7em;
+    }
+    .graphefiltredate  {
+        font-size: 0.7em;
+    }
+    .historique-table td {
+        font-size: 0.8em;
+    }
+    .historique-table {
+        width: 98%;
+    }
+    .notif {
+        font-size: 1em;
+    }
+}
+
+/* Smartphones grands */
+@media screen and (min-width: 481px) and (max-width:768px){
+    .graphefiltretitre {
+        font-size: 0.8em;
+    }
+    .graphefiltredate  {
+        font-size: 0.8em;
+    }
+    .historique-table td {
+        font-size: 1em;
+    }
+    .historique-table {
+        width: 98%;
+    }
+    .notif {
+        font-size: 1.2em;
+    }
+}
+
+/* Tablettes */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .name {
+        font-size: 0.9em;
+    }
+    .description {
+        font-size: 0.9em;
+    }
+}

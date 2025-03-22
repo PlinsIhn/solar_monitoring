@@ -9,24 +9,49 @@
     <title>{% block title %} Accueil - Surveillance solaire {% endblock %}</title>
 </head>
 <body>
-    <div class="home-container">
-        <h1>Bienvenue sur la plateforme de surveillance des installations solaire</h1>
-        <p>Accédez à une interface intuitive pour surveiller vos installations solaires en temps réel.</p>
+    <header>
+        <h1>Bienvenue sur la plateforme de surveillance des installations solaires</h1>
         <div class="home-buttons">
             <a href="{% url 'login' %}" class="btn">Connexion</a>
             <a href="{% url 'signup' %}" class="btn btn-secondary">Inscription</a>
         </div>
-    </div>
-    <br><br><br>
-    <div class="div1">
-        <h1>Pourquoi nous suivons les données des installations</h1>
-        <ol>
-            <li>Prendre décision en cas d'anomalie</li>
-            <li>Voir qlq</li>
-            <li>etc ...........</li>
-            <li>etc..........</li>
-        </ol>
-    </div>
-    
+    </header>
+
+    <main>
+        <p>
+            Notre plateforme est conçue pour vous offrir une <strong>gestion centralisée et en temps réel</strong> de vos installations solaires. Que vous soyez un propriétaire d'installation, un gestionnaire de parc solaire ou un technicien de maintenance, notre outil vous permet de <strong>surveiller, analyser et optimiser</strong> les performances de vos systèmes photovoltaïques avec précision et simplicité.
+        </p>
+        <h2>Pourquoi choisir notre plateforme ?</h2>
+        <div class="blog-list">
+            <div class="home-container">
+                <img src="{% static 'images/surveillance.webp' %}" alt="Panneaux solaires">
+                <p>Accédez à une interface intuitive pour surveiller vos installations solaires en temps réel.</p>
+            </div>
+            <div class="home-container">
+                <img src="{% static 'images/performance.jpg' %}" alt="Panneaux solaires">
+                <p>Suivre la performance de vos panneaux solaires à tout moment.</p>
+            </div>
+            <div class="home-container">
+                <img src="{% static 'images/notification.png' %}" alt="Alertes de dysfonctionnement">
+                <p>Recevoir des alertes en cas de dysfonctionnement ou de baisse de rendement.</p>
+            </div>
+            <div class="home-container">
+                <img src="{% static 'images/analyser.webp' %}" alt="Analyse des données">
+                <p>Analyser les données historiques pour optimiser votre production d'énergie.</p>
+            </div>
+            <div class="home-container">
+                <img src="{% static 'images/support.jpg' %}" alt="Support technique">
+                <p>Bénéficier d'un support technique dédié pour toutes vos questions.</p>
+            </div>
+        </div>
+        <h2>Notre mission</h2>
+        <p>
+            Nous croyons en un avenir énergétique durable et accessible. Notre plateforme a pour objectif de <strong>simplifier la gestion des installations solaires</strong> tout en <strong>maximisant leur efficacité</strong>. Que vous soyez un particulier, une entreprise ou une collectivité, nous vous accompagnons dans votre transition énergétique.
+        </p>
+    </main>
+
+    <footer>
+        <p>© 2025 Surveillance des installations Solaires. <br>Tous droits réservés.</p>
+    </footer>
 </body>
 </html>

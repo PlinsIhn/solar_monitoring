@@ -70,3 +70,13 @@ class ChannelForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Exemple : Temperature', 'class': 'form-control'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)  # Récupère l'utilisateur
+        super().__init__(*args, **kwargs)
+
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        if Channel.objects.filter(name=name, user=self.user).exists():
+            raise forms.ValidationError("Vous avez déjà créé un canal avec ce nom.")
+        return name

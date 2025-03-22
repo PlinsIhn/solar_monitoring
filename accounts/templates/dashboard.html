@@ -2,26 +2,62 @@
 {% load static %}
 
 {% block content %}
-    <h2>Dashboard</h2>
+    <h2 class="section-title"><i class="fas fa-chart-line"></i> Dashboard</h2>
 
+    <!-- Formulaire de filtrage -->
+    <form id="filter-form" style="margin-bottom: 20px;">
+        <label for="channel">Canal :</label>
+        <select name="channel" id="channel">
+            <option value="">-- Tous --</option>
+            {% for channel in channels %}
+                <option value="{{ channel.id }}">{{ channel.name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="start_date">De :</label>
+        <input type="date" name="start_date" id="start_date">
+
+        <label for="end_date">À :</label>
+        <input type="date" name="end_date" id="end_date">
+
+        <button type="submit">Filtrer</button>
+    </form>
+
+    <!-- Liste des canaux -->
     <div id="channel-list">
         {% for channel in channels %}
             <button class="widget-btn" data-channel-id="{{ channel.id }}" data-channel-name="{{ channel.name }}">
-                Voir le graphique : {{ channel.name }}
-            </button>
+                📊 {{ channel.name }}
+            </button> 
         {% empty %}
             <p>Aucun canal n'a été ajouté.</p>
-        {% endfor %}  
-    </div>
+        {% endfor %}
+    </div> <br>
 
-    <br>
+    
+
+    <!-- Conteneur pour les graphiques individuels -->
     <div id="graphs-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
         <!-- Les graphiques seront ajoutés dynamiquement ici -->
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.10.11/interact.min.js"></script> <!-- Pour redimensionner -->
+<!-- Graphique filtré avec bouton de fermeture et téléchargement -->
+<div id="filtered-chart-container" style="position: relative; width: 100%; max-width: 600px; margin-top: 20px; display: none; border: 2px solid #ccc; border-radius: 8px; padding: 10px;">
+    <!-- Titre du graphique filtré -->
+    <h3 id="filtered-chart-title" class="graphefiltretitre">📊 Graphique filtré de <span id="filtered-channel-name" class="izy" ></span></h3>
+    <p id="filtered-date-range" class="graphefiltredate"><br>Date : <span id="filtered-date-range-value"></span></p>
+    
+    <!-- Boutons de fermeture et de téléchargement -->
+    <button id="close-filtered-chart" style="position: absolute; top: 5px; right: 5px; border: none; background: transparent; cursor: pointer; font-size: 18px;">❌</button>
+    <button id="download-filtered-chart" style="position: absolute; bottom: 5px; left: 5px; border: none; background: transparent; cursor: pointer; font-size: 18px;">📥</button>
+    
+    <!-- Canvas pour le graphique filtré -->
+    <canvas id="filtered-chart"></canvas>
+</div>
 
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.10.11/interact.min.js"></script>
 {% endblock %}
 
 {% block extra_scripts %}
