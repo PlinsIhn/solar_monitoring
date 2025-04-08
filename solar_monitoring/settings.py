@@ -169,14 +169,13 @@ AUTHENTICATION_BACKENDS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://solar-monitoring.onrender.com',
-    # Ajoutez d'autres domaines si nécessaire
+    'https://www.solar-monitoring.onrender.com', 
 ]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 CORS_ALLOWED_ORIGINS = [
-    'https://solar-monitoring.onrender.com',
-]
-
-# Si vous utilisez des requêtes cross-origin
-CORS_ORIGIN_WHITELIST = [
-    'https://solar-monitoring.onrender.com',
+    "https://solar-monitoring.onrender.com",
 ]
