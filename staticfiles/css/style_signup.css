@@ -1,0 +1,140 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("/static/images/solar_Monitoring.jpg");
+    background-size: cover; /* Assure que l'image couvre toute la page */
+    background-attachment: fixed; /* Fige l'image lors du défilement */
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Évite les répétitions */
+}
+
+.title {
+    text-align: center;
+}
+.form-container {
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    width: 100%;
+    padding-right: 50px;
+    opacity: 0.9;
+    margin: 100px auto;
+    position: relative;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 12px;
+}
+.form-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+.btn {
+    width: 50%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center; /* Alignement textuel */
+    display: block; /* Transformer le bouton en élément de bloc */
+    margin: 10px auto; /* Centre horizontalement */
+}
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.messages {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #b1ff71;
+    background-color: #ffffff;
+    color: #06ff0b;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.error-message {
+    color: red;
+    font-size: 11px;
+}
+.messages p {
+    margin: 0;
+}
+
+
+/* petit ecran */
+@media screen and (max-width: 480px) {
+    .form-container {
+        width: 35%;
+        font-size: 0.5em;
+    }
+    .btn {
+        font-size: 0.7em;
+    }
+}
+
+/* Smartphones grands */
+@media screen and (min-width: 481px) and (max-width:768px){
+    .form-container {
+        width: 35%;
+        font-size: 0.7em;
+    }
+    .btn {
+        font-size: 0.9em;
+    }
+}
+
+
+
+
+.close-button {
+    position: absolute; /* Position absolue par rapport à .form-container */
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    padding: 7px;
+    transition: 1s;
+    border-radius: 7px;
+}
+.close-button:hover {
+    background-color: red;
+    transition: 1s;
+}
+
+.close-button a {
+    text-decoration: none;
+    color: #000;
+    font-size: 24px; /* Taille du "x" */
+    padding: 7px;
+    transition: 1s;
+}
+
+.close-button a:hover {
+    color: #ffffff; /* Change la couleur au survol */
+    transition: 1s;
+}

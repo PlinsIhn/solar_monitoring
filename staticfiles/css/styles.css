@@ -1,0 +1,734 @@
+/* Style général */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f5f5f5;
+    overflow-x: hidden; /* Empêche le défilement horizontal */
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px; /* Ajuste selon le besoin */
+    background-color: rgb(77, 69, 26);
+    color: white;
+    text-align: center;
+}
+
+#typing-text {
+    font-size: 1.8rem; /* Ajuste la taille du texte */
+    font-weight: bold;
+    white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+#typing-text::after {
+    content: "|";
+    font-weight: normal;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+
+@media screen and (max-width: 480px) {
+    #typing-text {
+        font-size: 0.8em; /* Ajuste la taille du texte */
+
+    }
+
+}
+
+/* Smartphones grands */
+@media screen and (min-width: 481px) and (max-width:768px){
+    #typing-text {
+        font-size: 0.9em; /* Ajuste la taille du texte */
+
+    }
+}
+
+/* Tablettes */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    #typing-text {
+        font-size: 1.1em; /* Ajuste la taille du texte */
+
+    }
+}
+
+/* Ordinateurs portables */
+@media screen and (min-width: 1025px) and (max-width: 1366px){
+    #typing-text {
+        font-size: 1.3em; /* Ajuste la taille du texte */
+
+    }
+}
+
+
+/* Conteneur principal */
+.container {
+    display: flex;
+    min-height: 100vh; /* S'assure que le conteneur prend toute la hauteur de l'écran */
+}
+
+/* Barre latérale (sidebar) */
+.sidebar {
+    width: 230px;
+    background-color: #ccccca;
+    color: rgb(97, 114, 242);
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul.menu li {
+    margin-bottom: 20px;
+}
+
+.sidebar ul.menu li a {
+    text-decoration: none;
+    color: rgb(25, 99, 227);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.sidebar ul.menu li a:hover,
+.sidebar ul.menu li.active a {
+    background-color: #8c939a;
+    color: #fff;
+}
+
+.sidebar ul.menu li a i {
+    margin-right: 10px; /* Espace entre l'icône et le texte */
+}
+
+.logout-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    color: white;
+    background-color: #ff4d4d;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #cc0000;
+}
+
+/* Contenu principal */
+main.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Permet de scroller le contenu si nécessaire */
+}
+
+/* Smartphones petits et moyens */
+@media screen and (max-width: 480px) {
+    .sidebar {
+        background-color: #e2e3de;
+        width: 45px;
+    }
+    span {
+        display : none;
+    }
+    main.content {
+        font-size: 0.5em; /* Permet de scroller le contenu si nécessaire */
+    }
+    
+}
+
+/* Smartphones grands */
+@media screen and (min-width: 481px) and (max-width:768px){
+    .sidebar {
+        background-color: #e2e3de;
+        width: 50px;
+    }
+    span {
+        display : none;
+    }
+    main.content {
+        font-size: 0.7em; /* Permet de scroller le contenu si nécessaire */
+    }
+}
+
+/* Tablettes */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .sidebar {
+        background-color: #e2e3de;
+        width: 50px;
+    }
+    span {
+        display : none;
+    }
+}
+
+
+
+/* Pied de page */
+footer.site-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer.site-footer .footer-content p {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+footer.site-footer .footer-content p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+footer.site-footer .footer-content p a:hover {
+    text-decoration: underline;
+    color : rgb(8, 185, 52);
+}
+
+           /* PROFIL */
+
+/* Style général pour la section Profil */
+.profile-details {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #f3ecec;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Titre de la section */
+.profile-details h2 {
+    font-size: 20px;
+    color: #007bff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Informations du profil */
+.profile-details p {
+    font-size: 16px;
+    color: #333333;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.profile-details strong {
+    font-weight: bold;
+    color: #555555;
+    margin-right: 10px;
+}
+
+.profile-details .icon {
+    font-size: 20px;
+    color: #007bff;
+    margin-right: 15px;
+}
+
+/* Style de l'API Key */
+.profile-details code {
+    font-size: 14px;
+    color: #e53935;
+    background-color: #fce4ec;
+    padding: 5px 8px;
+    border-radius: 5px;
+    border: 1px solid #e57373;
+}
+
+.copy-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+.copy-btn:hover {
+    background-color: #ffffff;
+    color:#007bff;
+}
+
+/* Smartphones petits et moyens */
+@media screen and (max-width: 480px) {
+    .profile-details p {
+        font-size: 0.8em;
+    }
+    .profile-details code {
+        font-size: 0.6em;
+    }
+    .copy-btn {
+        font-size: 1em;
+    }
+    .profile-details h2 {
+        font-size: 14px;
+    }
+    footer.site-footer .footer-content p {
+        font-size: 9px;
+    }
+}
+
+/* Smartphones grands */
+@media screen and (min-width: 481px) and (max-width:768px){
+    .profile-details p {
+        font-size: 1em;
+    }
+    .profile-details code {
+        font-size: 0.8em;
+    }
+    .copy-btn {
+        font-size: 1em;
+    }
+    .profile-details h2 {
+        font-size: 14px;
+    }
+    footer.site-footer .footer-content p {
+        font-size: 10px;
+    }
+}
+
+
+/* CHANNEL   */
+
+/* Style général pour la section de gestion des canaux */
+#channel-section {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #f3ecec;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Titre de la section */
+.section-title {
+    font-size: 20px;
+    color: #007bff;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.section-title i {
+    margin-right: 10px;
+}
+@media screen and (max-width: 480px) {
+    .section-title {
+        font-size: 14px;
+    }
+    
+}
+@media screen and (min-width: 481px) and (max-width:768px){
+    .section-title {
+        font-size: 14px;
+    }
+}
+
+/* Messages d'information */
+.messages {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #29c21b;
+    border-radius: 5px;
+    color: #35c01f;
+}
+
+.message {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Liste des canaux */
+.channel-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.channel-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.channel-list li strong {
+    font-size: 16px;
+    color: #333333;
+}
+
+.channel-list .delete-btn {
+    padding: 5px 10px;
+    background-color: #e53935;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.5s ease;
+}
+
+.channel-list .delete-btn:hover {
+    background-color: #ffffff;
+    color: #e53935;
+    transition: background-color 0.5s ease;
+}
+
+/* Formulaire d'ajout de canal */
+.nouveau {
+    color: rgb(7, 7, 80);
+}
+#channel-form {
+    margin-top: 20px;
+
+}
+form label {
+    font-size: 16px;
+}
+#channel-form input {
+    padding: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 50%;
+    
+}
+
+#channel-form h3 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #555555;
+}
+
+#channel-form .btn {
+    padding: 5px 10px;
+    background-color: #5e9bdc;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.5s ease;
+}
+
+#channel-form .btn:hover {
+    background-color: #ffffff;
+    color: #5e9bdc;
+    transition: background-color 0.5s ease;
+
+}
+
+.forme_teste {
+    display: none; 
+    margin-top: 10px;
+    padding-top: 1px;
+    padding: 3px; 
+    
+}
+
+.btn_teste {
+    padding: 10px;
+    background-color: #49db3b;
+    border: none;
+    color : white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.inpute {
+    width: 40px;
+    font-size: 12px;
+    height: 18px;
+}
+.send-btn {
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: rgb(81, 106, 245);
+    transition: background 0.3s ease;
+  }
+  
+  .send-btn:hover {
+    background: #005bb5;
+    color: white;
+  }
+  .name {
+    font-size: 15px;
+  }
+
+@media screen and (max-width: 480px) {
+    .description {
+        display: none;
+    }
+    .inpute {
+        width: 30px;
+        font-size: 9px;
+        height: 18px;
+    }
+    .name {
+        font-size: 8px;
+    }
+
+    .channel-list li strong {
+        font-size: 1em;
+    }
+    .channel-list .delete-btn {
+        font-size: 1em;
+    }
+    form label {
+        font-size : 1em;
+    }
+    #channel-form .btn {
+        font-size: 1em;
+    }
+}
+
+/* Smartphones grands */
+@media screen and (min-width: 481px) and (max-width:768px){
+    .description {
+        display: none;
+    }
+    .name {
+        font-size: 10px;
+     }
+
+     .channel-list li strong {
+        font-size: 1.2em;
+    }
+    .channel-list .delete-btn {
+        font-size: 1.1em;
+    }
+    form label {
+        font-size : 1.2em;
+    }
+    
+}
+
+/* Tablettes */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .name {
+        font-size: 10px;
+    }
+    .description {
+        font-size: 10px;
+    }
+    
+}
+
+/* Ordinateurs portables */
+@media screen and (min-width: 1025px) and (max-width: 1366px){
+    
+}
+
+
+#notification-container {
+    top: 20px;
+    right: 50px;
+}
+
+#notification-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+.badge {
+    background-color: red;
+    color: white;
+    font-size: 0.4em;
+    border-radius: 50%;
+    padding: 3px 6px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#notification-dropdown {
+    display: none;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    width: 250px;
+    padding: 10px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+
+#notification-dropdown ul {
+    list-style: none;
+    padding: 0;
+}
+
+#notification-dropdown ul li {
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+.notif {
+    font-size: 16px;
+}
+
+/* HISTORIQUE */
+
+.page-title {
+    font-size: 2rem;
+    color: #333;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.historique-table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.historique-table th, .historique-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.historique-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+.historique-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.historique-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.historique-table td {
+    font-size: 0.8rem;
+    color: #333;
+}
+
+
+
+header {
+    display: flex;           /* Utilise Flexbox pour aligner les éléments */
+    justify-content: flex-end; /* Aligne les éléments enfants à droite */
+    padding: 10px 20px;        /* Espacement autour de l'en-tête */
+}
+
+.datetime {
+    margin-left: auto; /* Pousse la date à droite */
+}
+
+.datetime p {
+    margin: 0;
+    font-weight: bold;
+    color: #484be9;
+    text-transform: capitalize; /* Met la première lettre en majuscule */
+}
+
+
+#channel-section-historique {
+    max-width: 800px;
+    margin: 5px auto;
+    padding: 1px;
+    padding-top: 0px;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+
+.graphefiltretitre {
+    color: red;
+    text-align: center; 
+    margin: 0 0 5px 0;
+}
+.graphefiltredate  {
+    text-align: center; 
+    margin: 0 0 10px 0; 
+    color: #666;
+}
+.izy {
+    color:rgb(0, 255, 42);
+}
+@media screen and (max-width: 480px) {
+    .graphefiltretitre {
+        font-size: 0.7em;
+    }
+    .graphefiltredate  {
+        font-size: 0.7em;
+    }
+    .historique-table td {
+        font-size: 0.8em;
+    }
+    .historique-table {
+        width: 98%;
+    }
+    .notif {
+        font-size: 1em;
+    }
+}
+
+/* Smartphones grands */
+@media screen and (min-width: 481px) and (max-width:768px){
+    .graphefiltretitre {
+        font-size: 0.8em;
+    }
+    .graphefiltredate  {
+        font-size: 0.8em;
+    }
+    .historique-table td {
+        font-size: 1em;
+    }
+    .historique-table {
+        width: 98%;
+    }
+    .notif {
+        font-size: 1.2em;
+    }
+}
+
+/* Tablettes */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .name {
+        font-size: 0.9em;
+    }
+    .description {
+        font-size: 0.9em;
+    }
+}
