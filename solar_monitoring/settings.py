@@ -27,8 +27,8 @@ SECRET_KEY = 'django-insecure-9)cd%=jof-o0o^0*%yfc28y&z^2!$fe%hixoi6=&z-5!exnvq!
 
 import os
 
-DEBUG = os.getenv("DEBUG", "True") == "True"
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1 localhost").split()
+DEBUG = False
+ALLOWED_HOSTS = ['solar-monitoring.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
