@@ -166,3 +166,17 @@ AUTHENTICATION_BACKENDS = [
     'accounts.backends.EmailBackend',  # Utilise l'email pour se connecter
     'django.contrib.auth.backends.ModelBackend',  # Pour le support classique
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://solar-monitoring.onrender.com',
+    # Ajoutez d'autres domaines si nécessaire
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'https://solar-monitoring.onrender.com',
+]
+
+# Si vous utilisez des requêtes cross-origin
+CORS_ORIGIN_WHITELIST = [
+    'https://solar-monitoring.onrender.com',
+]
