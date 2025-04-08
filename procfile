@@ -1,0 +1,1 @@
+web: daphne solar_monitoring.asgi:application

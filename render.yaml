@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: solar_monitoring
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: daphne solar_monitorig.asgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: solar_monitoring.settings
+      - key: SECRET_KEY
+        value: "django-insecure-9)cd%=jof-o0o^0*%yfc28y&z^2!$fe%hixoi6=&z-5!exnvq!"
+
+      - key: DEBUG
+        value: "False"
+    plan: free
