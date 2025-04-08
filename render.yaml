@@ -3,7 +3,6 @@ services:
     name: solar_monitoring
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: daphne solar_monitorig.asgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: solar_monitoring.settings
