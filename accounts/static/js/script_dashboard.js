@@ -23,7 +23,8 @@ function restoreGraphs() {
 }
 
 // Connexion WebSocket
-let socket = new WebSocket("ws://localhost:8000/ws/sensor-data/");
+const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
+const socket = new WebSocket(`${wsScheme}://${window.location.host}/ws/sensor-data/`);
 
 socket.onopen = function (event) {
     console.log("✅ WebSocket connecté avec succès !");

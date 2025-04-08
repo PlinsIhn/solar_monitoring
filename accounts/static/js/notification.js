@@ -5,8 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let notificationCount = document.getElementById("notification-count");
     let enableAlertTime = document.getElementById("enable-alert-time"); // Checkbox
 
-    let socket = new WebSocket("ws://localhost:8000/ws/sensor-data/");
-
+    const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
+    const socket = new WebSocket(`${wsScheme}://${window.location.host}/ws/sensor-data/`);
+    
     socket.onopen = function () {
         console.log("✅ WebSocket connecté !");
         restoreNotifications(); // Restaurer les notifications sauvegardées
