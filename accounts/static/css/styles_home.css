@@ -137,3 +137,45 @@ footer p {
     
 }
 
+/*pour contactez-nous */
+
+.contact {
+    text-align: center;
+    padding: 40px;
+    background-color: #f4f4f4;;
+    font-family: 'Arial', sans-serif;
+    color: rgb(44, 41, 212);
+}
+
+#typing-text {
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid rgb(223, 14, 66); /* Curseur clignotant */
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+
+@media screen and (max-width: 480px) {
+    
+    #typing-text {
+        font-size: 16px;
+    }
+}
+
+/* Smartphones grands */
+@media screen and (min-width: 481px) and (max-width:768px){
+
+    #typing-text {
+        font-size: 18px;
+    }
+}
+.contact-item a {
+    text-decoration: none;
+}

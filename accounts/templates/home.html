@@ -48,10 +48,60 @@
         <p>
             Nous croyons en un avenir énergétique durable et accessible. Notre plateforme a pour objectif de <strong>simplifier la gestion des installations solaires</strong> tout en <strong>maximisant leur efficacité</strong>. Que vous soyez un particulier, une entreprise ou une collectivité, nous vous accompagnons dans votre transition énergétique.
         </p>
+
+        <section class="contact">
+            <h2 id="typing-text"></h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="#">&nbsp;&nbsp; hrpirkt@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="#">&nbsp;&nbsp;+261 34 65 070 44 / +261 34 95 059 94</a>
+                </div>
+            </div>
+        </section> 
+
     </main>
 
     <footer>
         <p>© 2025 Surveillance des installations Solaires. <br>Tous droits réservés.</p>
     </footer>
+
+    <script>
+        const titleElement = document.getElementById("animated-text");
+        const emailElement = document.getElementById("email-text");
+        const phoneElement = document.getElementById("phone-text");
+
+        const titleText = "Contactez-nous";
+        const emailText = "hrpirkt@gmail.com";
+        const text = "Contactez-nous";
+        const typingText = document.getElementById("typing-text");
+
+        let index = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            if (!isDeleting) {
+                typingText.innerText = text.substring(0, index + 1);
+                index++;
+                if (index === text.length) {
+                    setTimeout(() => isDeleting = true, 1000); // Pause avant suppression
+                }
+            } else {
+                typingText.innerText = text.substring(0, index - 1);
+                index--;
+                if (index === 0) {
+                    isDeleting = false;
+                }
+            }
+            setTimeout(typeEffect, isDeleting ? 100 : 150); // Vitesse de suppression et écriture
+        }
+
+        typeEffect();
+
+    </script>
+    
 </body>
 </html>
